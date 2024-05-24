@@ -3,16 +3,25 @@ import Buttons from '../components/Buttons.vue'
 </script>
 
 <template>
+  <div>
+    <h1>Vue Calculator</h1>
+  </div>
   <div class="calculator">
-    <div class="results">
+    <div class="calculator-results">
       <span>123</span>
     </div>
     <div class="calculator-btns">
+      <div class="rows special-symbols">
+        <Buttons val="%" />
+        <Buttons val="√" />
+        <Buttons val="CE" />
+        <Buttons val="C" />
+      </div>
       <div class="rows">
         <Buttons val="7" />
         <Buttons val="8" />
         <Buttons val="9" />
-        <Buttons val="-" />
+        <Buttons val="﹣" />
       </div>
       <div class="rows">
         <Buttons val="4" />
@@ -40,22 +49,39 @@ import Buttons from '../components/Buttons.vue'
 .calculator {
   display: flex;
   flex-flow: column;
-  background-color: green;
-  min-height: 60vh;
+  background-color: #5DB28B;
   align-items: center;
+  justify-content: center;
+  padding: 20px 15px;
+}
+
+.calculator-results {
+  background-color: #465965;
+  color: #FFFFFF;
+  width: inherit;
+  margin: 0px 0px 20px;
+  width: -webkit-fill-available;
+  line-height: inherit;
+  text-align: right;
+  padding: 2px 8px;
+  font-size: 22px;
+
+  span {
+    font-weight: 600;
+  }
 }
 
 .rows {
   display: flex;
 }
 
-.results {
-  span {
-
-  }
+/* .special-symbols:nth-last-child(-n + 2) {
+  background-color: #FFFFFF;
+  color: black;
 }
 
-.calculator-btns {
-  margin: 30px 15px;
-}
+.rows:first-child {
+  background-color: #FFFFFF !important;
+  color: black;
+} */
 </style>
