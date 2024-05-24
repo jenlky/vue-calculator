@@ -5,39 +5,23 @@ defineProps<{
 </script>
 
 <template>
-  <div>
-    <button>{{ val }}</button>
-  </div>
+  <button>{{ val }}</button>
 </template>
 
 <style scoped>
 button {
-  background-color: darkgreen;
-  color: white;
+  background-color: #37474F;
+  color: #FFFFFF;
   width: 50px;
-  font-size: 18px;
   margin: 2px;
-}
-h1 {
-  font-weight: 500;
-  font-size: 2.6rem;
-  position: relative;
-  top: -10px;
+  font-size: 18px;
+  font-family: sans-serif;
+  line-height: inherit;
+  border: 0;
 }
 
-h3 {
-  font-size: 1.2rem;
+button:last-of-type {
+  background-color: #FFFFFF;
+  color: black;
 }
-
-/* .greetings h1,
-.greetings h3 {
-  text-align: center;
-}
-
-@media (min-width: 1024px) {
-  .greetings h1,
-  .greetings h3 {
-    text-align: left;
-  }
-} */
 </style>
