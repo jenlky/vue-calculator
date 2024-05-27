@@ -17,6 +17,16 @@ export default {
       } else {
         this.result = this.result + e.currentTarget.textContent
       }
+    },
+    clearHandler () {
+      this.result = 0
+    },
+    clearEntryHandler () {
+      if (this.result.length > 0) {
+        const values = this.result.split('')
+        values.splice(-1, 1)
+        this.result = values.join('') || 0
+      }
     }
   }
 }
@@ -34,8 +44,8 @@ export default {
       <div class="rows special-symbols">
         <Buttons val="%" />
         <Buttons val="√" />
-        <Buttons val="CE" />
-        <Buttons val="C" />
+        <Buttons val="CE" @click="clearEntryHandler" />
+        <Buttons val="C" @click="clearHandler" />
       </div>
       <div class="rows">
         <Buttons val="7" @click="numbersHandler" />
