@@ -11,8 +11,12 @@ export default {
     }
   },
   methods: {
-    numbers (value) {
-      this.result = this.result.concat(value)
+    numbersHandler (e) {
+      if (this.result === 0 || this.result == "0") {
+        this.result = e.currentTarget.textContent
+      } else {
+        this.result = this.result + e.currentTarget.textContent
+      }
     }
   }
 }
@@ -34,25 +38,25 @@ export default {
         <Buttons val="C" />
       </div>
       <div class="rows">
-        <Buttons val="7" />
-        <Buttons val="8" />
-        <Buttons val="9" />
+        <Buttons val="7" @click="numbersHandler" />
+        <Buttons val="8" @click="numbersHandler" />
+        <Buttons val="9" @click="numbersHandler" />
         <Buttons val="﹣" />
       </div>
       <div class="rows">
-        <Buttons val="4" />
-        <Buttons val="5" />
-        <Buttons val="6" />
+        <Buttons val="4" @click="numbersHandler" />
+        <Buttons val="5" @click="numbersHandler" />
+        <Buttons val="6" @click="numbersHandler" />
         <Buttons val="÷" />
       </div>
       <div class="rows">
-        <Buttons val="1" />
-        <Buttons val="2" />
-        <Buttons val="3" />
+        <Buttons val="1" @click="numbersHandler" />
+        <Buttons val="2" @click="numbersHandler" />
+        <Buttons val="3" @click="numbersHandler" />
         <Buttons val="x" />
       </div>
       <div class="rows">
-        <Buttons val="0" />
+        <Buttons val="0" @click="numbersHandler" />
         <Buttons val="." />
         <Buttons val="=" />
         <Buttons val="+" />
