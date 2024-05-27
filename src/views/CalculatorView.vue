@@ -1,5 +1,21 @@
-<script setup lang="ts">
+<script>
 import Buttons from '../components/Buttons.vue'
+
+export default {
+  components: {
+    Buttons
+  },
+  data() {
+    return {
+      result: 0
+    }
+  },
+  methods: {
+    numbers (value) {
+      this.result = this.result.concat(value)
+    }
+  }
+}
 </script>
 
 <template>
@@ -8,7 +24,7 @@ import Buttons from '../components/Buttons.vue'
   </div>
   <div class="calculator">
     <div class="calculator-results">
-      <span>123</span>
+      <span>{{ result }}</span>
     </div>
     <div class="calculator-btns">
       <div class="rows special-symbols">
