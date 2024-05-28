@@ -27,6 +27,35 @@ export default {
         values.splice(-1, 1)
         this.result = values.join('') || 0
       }
+    },
+    plusHandler () {
+      if (this.result[this.result.length-1] !== "+") {
+        this.result = this.result + "+"
+      }
+    },
+    minusHandler () {
+      if (this.result[this.result.length-1] !== "-") {
+        this.result = this.result + "-"
+      }
+    },
+    equalHandler () {
+      const values = this.result.split('')
+      console.log('values', values)
+
+      let previousValue = 0
+
+      // for (let x = 0; x < values.length; x++) {
+      //   i
+      // }
+
+      // values.forEach(value => {
+      //   if (value === "+") {
+          
+      //   }
+      //   previousValue = value
+
+      // });
+
     }
   }
 }
@@ -51,7 +80,7 @@ export default {
         <Buttons val="7" @click="numbersHandler" />
         <Buttons val="8" @click="numbersHandler" />
         <Buttons val="9" @click="numbersHandler" />
-        <Buttons val="﹣" />
+        <Buttons val="﹣" @click="minusHandler" />
       </div>
       <div class="rows">
         <Buttons val="4" @click="numbersHandler" />
@@ -68,8 +97,8 @@ export default {
       <div class="rows">
         <Buttons val="0" @click="numbersHandler" />
         <Buttons val="." />
-        <Buttons val="=" />
-        <Buttons val="+" />
+        <Buttons val="=" @click="equalHandler" />
+        <Buttons val="+" @click="plusHandler"  />
       </div>
     </div>
   </div>
