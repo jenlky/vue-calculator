@@ -1,41 +1,58 @@
 <script>
 import Buttons from '../components/Buttons.vue'
 
+// JavaScript RegExp objects are stateful when they have the global or sticky flags set (e.g., /foo/g or /foo/y). 
+// They store a lastIndex from the previous match. 
+const regex = /\+|-|x|÷/
+
 export default {
   components: {
     Buttons
   },
   data() {
     return {
-      result: 0
+      result: "0"
     }
   },
   methods: {
     numbersHandler (e) {
-      if (this.result === 0 || this.result == "0") {
+      if (this.result === "0") {
         this.result = e.currentTarget.textContent
       } else {
         this.result = this.result + e.currentTarget.textContent
       }
     },
     clearHandler () {
-      this.result = 0
+      this.result = "0"
     },
     clearEntryHandler () {
       if (this.result.length > 0) {
         const values = this.result.split('')
         values.splice(-1, 1)
-        this.result = values.join('') || 0
+        this.result = values.join('') || "0"
       }
     },
+    lastCharIsNotOperator () {
+      return !regex.test(this.result[this.result.length-1])
+    },
     plusHandler () {
-      if (this.result[this.result.length-1] !== "+") {
+      if (this.lastCharIsNotOperator()) {
         this.result = this.result + "+"
       }
     },
     minusHandler () {
-      if (this.result[this.result.length-1] !== "-") {
+      if (this.lastCharIsNotOperator()) {
         this.result = this.result + "-"
+      }
+    },
+    multiplyHandler () {
+      if (this.lastCharIsNotOperator()) {
+        this.result = this.result + "x"
+      }
+    },
+    divideHandler () {
+      if (this.lastCharIsNotOperator()) {
+        this.result = this.result + "÷"
       }
     },
     equalHandler () {
@@ -86,19 +103,19 @@ export default {
         <Buttons val="4" @click="numbersHandler" />
         <Buttons val="5" @click="numbersHandler" />
         <Buttons val="6" @click="numbersHandler" />
-        <Buttons val="÷" />
+        <Buttons val="÷" @click="divideHandler" />
       </div>
       <div class="rows">
         <Buttons val="1" @click="numbersHandler" />
         <Buttons val="2" @click="numbersHandler" />
         <Buttons val="3" @click="numbersHandler" />
-        <Buttons val="x" />
+        <Buttons val="x" @click="multiplyHandler" />
       </div>
       <div class="rows">
         <Buttons val="0" @click="numbersHandler" />
         <Buttons val="." />
         <Buttons val="=" @click="equalHandler" />
-        <Buttons val="+" @click="plusHandler"  />
+        <Buttons val="+" @click="plusHandler" />
       </div>
     </div>
   </div>
