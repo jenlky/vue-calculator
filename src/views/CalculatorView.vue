@@ -33,47 +33,45 @@ export default {
       }
     },
     lastCharIsNotOperator () {
-      return !regex.test(this.result[this.result.length-1])
+      return !regex.test(this.result[this.result.length-2])
     },
     plusHandler () {
       if (this.lastCharIsNotOperator()) {
-        this.result = this.result + "+"
+        this.result = this.result + " + "
       }
     },
     minusHandler () {
       if (this.lastCharIsNotOperator()) {
-        this.result = this.result + "-"
+        this.result = this.result + " - "
       }
     },
     multiplyHandler () {
       if (this.lastCharIsNotOperator()) {
-        this.result = this.result + "x"
+        this.result = this.result + " x "
       }
     },
     divideHandler () {
       if (this.lastCharIsNotOperator()) {
-        this.result = this.result + "÷"
+        this.result = this.result + " ÷ "
       }
     },
     equalHandler () {
-      const values = this.result.split('')
+      const values = this.result.split(' ')
       console.log('values', values)
+      console.log('add', this.mathLogic()["+"](3, 4))
 
-      let previousValue = 0
-
-      // for (let x = 0; x < values.length; x++) {
-      //   i
-      // }
-
-      // values.forEach(value => {
-      //   if (value === "+") {
-          
-      //   }
-      //   previousValue = value
-
-      // });
-
-    }
+      // values.map(val => {
+        
+      // })
+    },
+    mathLogic () {
+      return {
+        "+": function (x, y) { return x + y },
+        "-": function (x, y) { return x - y },
+        "x": function (x, y) { return x * y },
+        "÷": function (x, y) { return x / y }
+      }
+    },
   }
 }
 </script>
