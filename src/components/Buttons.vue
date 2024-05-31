@@ -1,11 +1,13 @@
 <script setup lang="ts">
-defineProps<{
-  val: string
-}>()
+defineProps<{ value:string }>()
+
+// function clickHandler(e) {
+//   console.log(e.currentTarget.textContent)
+// }
 </script>
 
 <template>
-  <button>{{ val }}</button>
+  <button @click="$emit('clickHandler', e)">{{ value }}</button>
 </template>
 
 <style scoped>
@@ -18,6 +20,7 @@ button {
   font-family: sans-serif;
   line-height: inherit;
   border: 0;
+  cursor: pointer;
 }
 
 button:last-of-type {

@@ -56,10 +56,13 @@ export default {
       }
     },
     equalHandler () {
-      const values = this.result.split(' ')
-      console.log('values', values)
+      // const values = this.result.split(' ')
+      // console.log('values', values)
       console.log('add', this.mathLogic()["+"](3, 4))
 
+      console.log(eval(this.result))
+
+      this.result = eval(this.result)
       // values.map(val => {
         
       // })
@@ -86,34 +89,34 @@ export default {
     </div>
     <div class="calculator-btns">
       <div class="rows special-symbols">
-        <Buttons val="%" />
-        <Buttons val="√" />
-        <Buttons val="CE" @click="clearEntryHandler" />
-        <Buttons val="C" @click="clearHandler" />
+        <Buttons value="%" />
+        <Buttons value="√" />
+        <Buttons value="CE" @click="clearEntryHandler" />
+        <Buttons value="C" @click="clearHandler" />
       </div>
       <div class="rows">
-        <Buttons val="7" @click="numbersHandler" />
-        <Buttons val="8" @click="numbersHandler" />
-        <Buttons val="9" @click="numbersHandler" />
-        <Buttons val="﹣" @click="minusHandler" />
+        <Buttons value="7" @click="numbersHandler" />
+        <Buttons value="8" @click="numbersHandler" />
+        <Buttons value="9" @click="numbersHandler" />
+        <Buttons value="﹣" @click="minusHandler" />
       </div>
       <div class="rows">
-        <Buttons val="4" @click="numbersHandler" />
-        <Buttons val="5" @click="numbersHandler" />
-        <Buttons val="6" @click="numbersHandler" />
-        <Buttons val="÷" @click="divideHandler" />
+        <Buttons value="4" @click="numbersHandler" />
+        <Buttons value="5" @click="numbersHandler" />
+        <Buttons value="6" @click="numbersHandler" />
+        <Buttons value="÷" @click="divideHandler" />
       </div>
       <div class="rows">
-        <Buttons val="1" @click="numbersHandler" />
-        <Buttons val="2" @click="numbersHandler" />
-        <Buttons val="3" @click="numbersHandler" />
-        <Buttons val="x" @click="multiplyHandler" />
+        <Buttons value="1" @click="numbersHandler" />
+        <Buttons value="2" @click="numbersHandler" />
+        <Buttons value="3" @click="numbersHandler" />
+        <Buttons value="x" @click="multiplyHandler" />
       </div>
       <div class="rows">
-        <Buttons val="0" @click="numbersHandler" />
-        <Buttons val="." />
-        <Buttons val="=" @click="equalHandler" />
-        <Buttons val="+" @click="plusHandler" />
+        <Buttons value="0" @click="numbersHandler" />
+        <Buttons value="." />
+        <Buttons value="=" @click="equalHandler" />
+        <Buttons value="+" @click="plusHandler" />
       </div>
     </div>
   </div>
