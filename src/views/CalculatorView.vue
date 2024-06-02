@@ -16,10 +16,11 @@ export default {
   },
   methods: {
     numbersHandler (e) {
-      if (this.result === "0") {
-        this.result = e.currentTarget.textContent
+      const value = e.currentTarget.textContent
+      if (this.result === "0" && value !== ".") {
+        this.result = value
       } else {
-        this.result = this.result + e.currentTarget.textContent
+        this.result = this.result + value
       }
     },
     clearHandler () {
@@ -47,19 +48,20 @@ export default {
     },
     multiplyHandler () {
       if (this.lastCharIsNotOperator()) {
-        this.result = this.result + " x "
+        this.result = this.result + " * "
       }
     },
-    divideHandler () {
+    divideHandler (e) {
       if (this.lastCharIsNotOperator()) {
-        this.result = this.result + " ÷ "
+        this.result = this.result + ` ${e.target.value} `
       }
     },
     equalHandler () {
       // const values = this.result.split(' ')
       // console.log('values', values)
-      console.log('add', this.mathLogic()["+"](3, 4))
+      // console.log('add', this.mathLogic()["+"](3, 4))
 
+      console.log(this.result)
       console.log(eval(this.result))
 
       this.result = eval(this.result)
@@ -89,34 +91,34 @@ export default {
     </div>
     <div class="calculator-btns">
       <div class="rows special-symbols">
-        <Buttons value="%" />
-        <Buttons value="√" />
-        <Buttons value="CE" @click="clearEntryHandler" />
-        <Buttons value="C" @click="clearHandler" />
+        <Buttons display="%" val="%" />
+        <Buttons display="√" val="√" />
+        <Buttons display="CE" val="CE" @click="clearEntryHandler" />
+        <Buttons display="C" val="C" @click="clearHandler" />
       </div>
       <div class="rows">
-        <Buttons value="7" @click="numbersHandler" />
-        <Buttons value="8" @click="numbersHandler" />
-        <Buttons value="9" @click="numbersHandler" />
-        <Buttons value="﹣" @click="minusHandler" />
+        <Buttons display="8" val="8" @click="numbersHandler" />
+        <Buttons display="7" val="7" @click="numbersHandler" />
+        <Buttons display="9" val="9" @click="numbersHandler" />
+        <Buttons display="﹣" val="﹣" @click="minusHandler" />
       </div>
       <div class="rows">
-        <Buttons value="4" @click="numbersHandler" />
-        <Buttons value="5" @click="numbersHandler" />
-        <Buttons value="6" @click="numbersHandler" />
-        <Buttons value="÷" @click="divideHandler" />
+        <Buttons display="4" val="4" @click="numbersHandler" />
+        <Buttons display="5" val="5" @click="numbersHandler" />
+        <Buttons display="6" val="6" @click="numbersHandler" />
+        <Buttons display="÷" val="/" @click="divideHandler" />
       </div>
       <div class="rows">
-        <Buttons value="1" @click="numbersHandler" />
-        <Buttons value="2" @click="numbersHandler" />
-        <Buttons value="3" @click="numbersHandler" />
-        <Buttons value="x" @click="multiplyHandler" />
+        <Buttons display="1" val="1" @click="numbersHandler" />
+        <Buttons display="2" val="2" @click="numbersHandler" />
+        <Buttons display="3" val="3" @click="numbersHandler" />
+        <Buttons display="x" val="*" @click="multiplyHandler" />
       </div>
       <div class="rows">
-        <Buttons value="0" @click="numbersHandler" />
-        <Buttons value="." />
-        <Buttons value="=" @click="equalHandler" />
-        <Buttons value="+" @click="plusHandler" />
+        <Buttons display="0" val="0" @click="numbersHandler" />
+        <Buttons display="." val="." @click="numbersHandler" />
+        <Buttons display="=" val="=" @click="equalHandler" />
+        <Buttons display="+" val="+" @click="plusHandler" />
       </div>
     </div>
   </div>
