@@ -1,13 +1,9 @@
 <script setup lang="ts">
-defineProps<{ value:string }>()
-
-// function clickHandler(e) {
-//   console.log(e.currentTarget.textContent)
-// }
+defineProps<{ display: string }>()
 </script>
 
 <template>
-  <button @click="$emit('clickHandler', e)">{{ value }}</button>
+  <button>{{ display }}</button>
 </template>
 
 <style scoped>
