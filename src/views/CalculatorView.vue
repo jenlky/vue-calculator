@@ -64,9 +64,9 @@ export default {
         this.result = this.result + " / "
       }
     },
-    // sqRootHandler (e) {
+    // sqRootHandler () {
     //   if (this.lastCharIsNotOperator()) {
-    //     this.result = this.result + ` ${e.target.value} `
+    //     this.result = this.result + " √ "
     //   }
     // },
     equalHandler () {
@@ -108,10 +108,10 @@ export default {
     </div>
     <div class="calculator-btns">
       <div class="rows special-symbols">
-        <Buttons display="%" val="%" />
-        <Buttons display="√" val="√" />
-        <Buttons display="CE" val="CE" @click="clearEntryHandler" />
-        <Buttons display="C" val="C" @click="clearHandler" />
+        <Buttons display="%" style="visibility: hidden;" />
+        <Buttons display="√" @click="sqRootHandler" style="visibility: hidden;" />
+        <Buttons display="CE" @click="clearEntryHandler" />
+        <Buttons display="C" @click="clearHandler" />
       </div>
       <div class="rows">
         <Buttons display="8" @click="numbersHandler" />
