@@ -11,63 +11,79 @@ export default {
   },
   data() {
     return {
+      display: "0",
       result: "0"
     }
   },
   methods: {
     numbersHandler (e) {
       const value = e.currentTarget.textContent
-      if (this.result === "0" && value !== ".") {
+      if (this.display === "0" && value !== ".") {
+        this.display = value
         this.result = value
       } else {
+        this.display = this.display + value
         this.result = this.result + value
       }
     },
     clearHandler () {
+      this.display = "0"
       this.result = "0"
     },
     clearEntryHandler () {
-      if (this.result.length > 0) {
-        const values = this.result.split('')
+      if (this.display.length > 0) {
+        const values = this.display.split('')
         values.splice(-1, 1)
-        this.result = values.join('') || "0"
+        this.display = values.join('') || "0"
       }
     },
     lastCharIsNotOperator () {
-      return !regex.test(this.result[this.result.length-2])
+      return !regex.test(this.display[this.display.length-2])
     },
     plusHandler () {
       if (this.lastCharIsNotOperator()) {
-        this.result = this.result + " + "
+        this.display = this.result + " + "
+        this.result = this.display
       }
     },
     minusHandler () {
       if (this.lastCharIsNotOperator()) {
-        this.result = this.result + " - "
+        this.display = this.result + " - "
+        this.result = this.display
       }
     },
     multiplyHandler () {
       if (this.lastCharIsNotOperator()) {
+        this.display = this.result + " x "
         this.result = this.result + " * "
       }
     },
-    divideHandler (e) {
+    divideHandler () {
       if (this.lastCharIsNotOperator()) {
-        this.result = this.result + ` ${e.target.value} `
+        this.display = this.result + " ÷ "
+        this.result = this.result + " / "
       }
     },
+    // sqRootHandler (e) {
+    //   if (this.lastCharIsNotOperator()) {
+    //     this.result = this.result + ` ${e.target.value} `
+    //   }
+    // },
     equalHandler () {
       // const values = this.result.split(' ')
       // console.log('values', values)
       // console.log('add', this.mathLogic()["+"](3, 4))
 
-      console.log(this.result)
-      console.log(eval(this.result))
-
-      this.result = eval(this.result)
       // values.map(val => {
         
       // })
+
+      console.log(this.display)
+      console.log(this.result)
+      // console.log(eval(this.result))
+      
+      this.result = eval(this.result)
+      this.display = this.result
     },
     mathLogic () {
       return {
@@ -87,7 +103,7 @@ export default {
   </div>
   <div class="calculator">
     <div class="calculator-results">
-      <span>{{ result }}</span>
+      <span>{{ display }}</span>
     </div>
     <div class="calculator-btns">
       <div class="rows special-symbols">
@@ -97,28 +113,28 @@ export default {
         <Buttons display="C" val="C" @click="clearHandler" />
       </div>
       <div class="rows">
-        <Buttons display="8" val="8" @click="numbersHandler" />
-        <Buttons display="7" val="7" @click="numbersHandler" />
-        <Buttons display="9" val="9" @click="numbersHandler" />
-        <Buttons display="﹣" val="﹣" @click="minusHandler" />
+        <Buttons display="8" @click="numbersHandler" />
+        <Buttons display="7" @click="numbersHandler" />
+        <Buttons display="9" @click="numbersHandler" />
+        <Buttons display="﹣" @click="minusHandler" />
       </div>
       <div class="rows">
-        <Buttons display="4" val="4" @click="numbersHandler" />
-        <Buttons display="5" val="5" @click="numbersHandler" />
-        <Buttons display="6" val="6" @click="numbersHandler" />
-        <Buttons display="÷" val="/" @click="divideHandler" />
+        <Buttons display="4" @click="numbersHandler" />
+        <Buttons display="5" @click="numbersHandler" />
+        <Buttons display="6" @click="numbersHandler" />
+        <Buttons display="÷" @click="divideHandler" />
       </div>
       <div class="rows">
-        <Buttons display="1" val="1" @click="numbersHandler" />
-        <Buttons display="2" val="2" @click="numbersHandler" />
-        <Buttons display="3" val="3" @click="numbersHandler" />
-        <Buttons display="x" val="*" @click="multiplyHandler" />
+        <Buttons display="1" @click="numbersHandler" />
+        <Buttons display="2" @click="numbersHandler" />
+        <Buttons display="3" @click="numbersHandler" />
+        <Buttons display="x" @click="multiplyHandler" />
       </div>
       <div class="rows">
-        <Buttons display="0" val="0" @click="numbersHandler" />
-        <Buttons display="." val="." @click="numbersHandler" />
-        <Buttons display="=" val="=" @click="equalHandler" />
-        <Buttons display="+" val="+" @click="plusHandler" />
+        <Buttons display="0" @click="numbersHandler" />
+        <Buttons display="." @click="numbersHandler" />
+        <Buttons display="=" @click="equalHandler" />
+        <Buttons display="+" @click="plusHandler" />
       </div>
     </div>
   </div>
@@ -153,14 +169,4 @@ export default {
 .rows {
   display: flex;
 }
-
-/* .special-symbols:nth-last-child(-n + 2) {
-  background-color: #FFFFFF;
-  color: black;
-}
-
-.rows:first-child {
-  background-color: #FFFFFF !important;
-  color: black;
-} */
 </style>
