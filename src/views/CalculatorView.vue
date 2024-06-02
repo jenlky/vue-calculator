@@ -78,13 +78,14 @@ export default {
         
       // })
 
-      console.log(this.display)
-      console.log(this.result)
-      // console.log(eval(this.result))
-      
-      this.result = eval(this.result)
-      this.display = this.result
+      try {    
+        this.result = eval(this.result)
+        this.display = this.result
+      } catch (error) {
+        alert("Incorrect formatting")
+      }
     },
+    // to replace eval bc eval is not secure and you never know if the code you execute can be trusted
     mathLogic () {
       return {
         "+": function (x, y) { return x + y },
