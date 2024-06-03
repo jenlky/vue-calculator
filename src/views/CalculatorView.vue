@@ -1,4 +1,4 @@
-<script>
+<script lang="ts">
 import Buttons from '../components/Buttons.vue'
 
 // JavaScript RegExp objects are stateful when they have the global or sticky flags set (e.g., /foo/g or /foo/y). 
@@ -74,10 +74,6 @@ export default {
       // console.log('values', values)
       // console.log('add', this.mathLogic()["+"](3, 4))
 
-      // values.map(val => {
-        
-      // })
-
       try {    
         this.result = eval(this.result)
         this.display = this.result
@@ -86,14 +82,14 @@ export default {
       }
     },
     // to replace eval bc eval is not secure and you never know if the code you execute can be trusted
-    mathLogic () {
-      return {
-        "+": function (x, y) { return x + y },
-        "-": function (x, y) { return x - y },
-        "x": function (x, y) { return x * y },
-        "÷": function (x, y) { return x / y }
-      }
-    },
+    // mathLogic () {
+    //   return {
+    //     "+": function (x, y) { return x + y },
+    //     "-": function (x, y) { return x - y },
+    //     "x": function (x, y) { return x * y },
+    //     "÷": function (x, y) { return x / y }
+    //   }
+    // },
   }
 }
 </script>
@@ -109,7 +105,7 @@ export default {
     <div class="calculator-btns">
       <div class="rows special-symbols">
         <Buttons display="%" style="visibility: hidden;" />
-        <Buttons display="√" @click="sqRootHandler" style="visibility: hidden;" />
+        <Buttons display="√" style="visibility: hidden;" />
         <Buttons display="CE" @click="clearEntryHandler" />
         <Buttons display="C" @click="clearHandler" />
       </div>
