@@ -6,7 +6,7 @@
   "scripts": {
     "dev": "vite",
     "predeploy": "npm run build",
-    "deploy": "gh-pages -d public",
+    "deploy": "gh-pages -d dist",
     "test": "vitest",
     "build": "run-p type-check \"build-only {@}\" --",
     "preview": "vite preview",
